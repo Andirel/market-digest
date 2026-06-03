@@ -1,28 +1,29 @@
-"""Render the daily page from ratings + perspectives into static HTML."""
+"""Publish step: write the data payload and copy the static dashboard into docs/.
+
+The dashboard is a client-side app (web/index.html + app.js + styles.css) that
+fetches data.json at load. Keeping the app in web/ (source-controlled) and the
+generated output in docs/ (gitignored) means the build just copies + writes.
+"""
 import datetime
+import json
+import shutil
 from pathlib import Path
 
-from jinja2 import Environment, FileSystemLoader, select_autoescape
-
-env = Environment(
-    loader=FileSystemLoader("templates"),
-    autoescape=select_autoescape(["html"]),
-)
+WEB = Path("web")
 
 
-def build_page(out_path: Path, ratings, perspectives):
-    covered = [r for r in ratings if r["mean"] is not None]
-    tmpl = env.get_template("index.html.j2")
-    html = tmpl.render(
-        date=datetime.date.today().isoformat(),
-        ratings=ratings,
-        perspectives=perspectives,
-        stats={
-            "total": len(ratings),
-            "covered": len(covered),
-            "strong_buy": sum(1 for r in covered if r["mean"] <= 1.5),
-            "buy": sum(1 for r in covered if 1.5 < r["mean"] <= 2.5),
-        },
-    )
-    out_path.write_text(html, encoding="utf-8")
-    print(f"wrote {out_path} ({len(ratings)} rows)")
+def publish(out_dir: Path, payload: dict):
+    out_dir.mkdir(exist_ok=True)
+    payload = dict(payload)
+    payload["generated"] = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+    payload["date"] = datetime.date.today().isoformat()
+
+    (out_dir / "data.json").write_text(json.dumps(payload, separators=(",", ":")), encoding="utf-8")
+
+    for name in ("index.html", "app.js", "styles.css"):
+        src = WEB / name
+        if src.exists():
+            shutil.copyfile(src, out_dir / name)
+
+    n = len(payload.get("stocks", []))
+    print(f"wrote {out_dir/'data.json'} ({n} stocks) + copied web assets")

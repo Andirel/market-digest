@@ -22,12 +22,13 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Build the page
+      - name: Build the dashboard data + assets
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           WATCHLIST: "AAPL,MSFT,NVDA,AMZN,GOOGL,META,TSLA"
-          # Remove UNIVERSE_LIMIT to fetch the full universe (slow; expect throttling).
-          UNIVERSE_LIMIT: "400"
+          # Top-N US stocks by market cap to enrich each day.
+          TOP_N: "500"
+          ENRICH_SLEEP: "0.35"
         run: python main.py
 
       - name: Publish to gh-pages

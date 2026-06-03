@@ -32,6 +32,45 @@ def _label(score):
     return LABELS[min(5, max(1, round(score)))]
 
 
+def consensus_from_recommendations(rec):
+    """Reduce a yfinance recommendations DataFrame to a rich consensus dict.
+
+    Returns the full 1-5 distribution, the weighted mean + label + analyst
+    count for the current month, and momentum vs. the oldest available month
+    (3 months back) so the UI can show direction, not just a static score.
+    Returns None when there is no coverage at all.
+    """
+    if rec is None or len(rec) == 0:
+        return None
+    rows = rec.to_dict("records") if hasattr(rec, "to_dict") else list(rec)
+    if "period" in (rec.columns if hasattr(rec, "columns") else []):
+        cur = next((r for r in rows if r.get("period") == "0m"), rows[0])
+        prev = next((r for r in reversed(rows) if r.get("period") != "0m"), None)
+    else:
+        cur, prev = rows[0], (rows[-1] if len(rows) > 1 else None)
+
+    mean, n = _mean_from_counts(cur)
+    if mean is None:
+        return None
+    dist = {k: int(cur.get(k, 0) or 0) for k in SCALE}
+    prev_mean = _mean_from_counts(prev)[0] if prev else None
+    delta = round(mean - prev_mean, 2) if prev_mean is not None else None
+    # Lower score = more bullish, so a negative delta is an upgrade in sentiment.
+    if delta is None or abs(delta) < 0.02:
+        direction = "flat"
+    else:
+        direction = "up" if delta < 0 else "down"
+    return {
+        "mean": mean,
+        "label": _label(mean),
+        "analysts": n,
+        "distribution": dist,
+        "prev_mean": prev_mean,
+        "delta": delta,
+        "direction": direction,
+    }
+
+
 def fetch_one(yahoo_symbol: str):
     """Return {'mean': float, 'label': str, 'analysts': int} or None.
 

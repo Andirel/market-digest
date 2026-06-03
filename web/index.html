@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Consensus · Equity Intelligence Terminal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,900&family=Inter:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@31.3.4/styles/ag-grid.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@31.3.4/styles/ag-theme-quartz.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <div class="kick">NYSE · NASDAQ — Top 500 by Market Cap</div>
+      <h1>The Consensus</h1>
+      <div class="sub">
+        <span class="live"><span class="dot"></span>Live</span>
+        &nbsp;·&nbsp; Analyst consensus, fundamentals &amp; technicals
+        &nbsp;·&nbsp; Updated <span id="asof">—</span>
+      </div>
+    </div>
+    <div class="brand" style="text-align:right">
+      <div class="kick">Consensus scale</div>
+      <div class="sub num">1 Strong&nbsp;Buy · 2 Buy · 3 Hold · 4 Sell · 5 Strong&nbsp;Sell</div>
+      <div class="sub muted">Lower = more bullish</div>
+    </div>
+  </header>
+
+  <!-- dashboard metric cards -->
+  <section class="cards" id="cards"></section>
+
+  <!-- visualizations -->
+  <section class="viz">
+    <div class="panel">
+      <div class="ph"><h3>Market Heatmap</h3><span class="hint">size = market cap · color = avg consensus · click to filter</span></div>
+      <div id="heatmap"></div>
+    </div>
+    <div class="stack2">
+      <div class="panel"><div class="ph"><h3>Consensus Distribution</h3><span class="hint">analyst ratings</span></div><div id="distChart" class="chart"></div></div>
+      <div class="panel"><div class="ph"><h3>Sector Implied Upside</h3><span class="hint">avg price-target upside</span></div><div id="sectorChart" class="chart"></div></div>
+    </div>
+  </section>
+
+  <!-- toolbar -->
+  <section class="toolbar">
+    <div class="tb-row">
+      <div class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="q" type="search" placeholder="Search ticker, company, sector, industry, theme…" autocomplete="off">
+        <span class="kbd">/</span>
+      </div>
+      <div class="popwrap">
+        <button class="btn" id="colsBtn">⛃ Columns</button>
+        <div class="pop" id="colsPop"></div>
+      </div>
+      <button class="btn" id="hideNoCov">Hide no-coverage</button>
+      <button class="btn" id="density">Compact</button>
+      <button class="btn" id="fs">⤢ Fullscreen</button>
+      <button class="btn" id="reset">Reset</button>
+      <button class="btn" id="csv">⭳ CSV</button>
+      <span class="count" id="count">—</span>
+    </div>
+    <div class="presets" id="presets"></div>
+  </section>
+
+  <div class="gridwrap">
+    <div id="grid" class="ag-theme-quartz-dark"></div>
+  </div>
+
+  <div class="disc"><strong>Not investment advice.</strong> Aggregated third-party analyst ratings,
+    fundamentals and computed technicals for information and education only — not a recommendation to
+    buy or sell, and not personalized. Data may be delayed or incomplete; empty cells mean a value was
+    not available from the source. Do your own research.</div>
+
+  <footer id="footer"></footer>
+</div>
+
+<!-- detail drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true"></aside>
+
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community@31.3.4/dist/ag-grid-community.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
