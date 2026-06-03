@@ -1,0 +1,37 @@
+name: daily-digest
+
+on:
+  schedule:
+    # 09:30 UTC every weekday (after US analyst data settles). Cron is UTC.
+    - cron: "30 9 * * 1-5"
+  workflow_dispatch: {}   # lets you run it manually from the Actions tab
+
+permissions:
+  contents: write   # to commit the generated page to gh-pages
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Build the page
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          WATCHLIST: "AAPL,MSFT,NVDA,AMZN,GOOGL,META,TSLA"
+          # Remove UNIVERSE_LIMIT to fetch the full universe (slow; expect throttling).
+          UNIVERSE_LIMIT: "400"
+        run: python main.py
+
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
