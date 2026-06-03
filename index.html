@@ -1,0 +1,3733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Consensus &middot; 2026-06-03</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12100d; --panel:#1a1713; --ink:#f3ece0; --muted:#9a9082;
+    --line:#2c271f; --buy:#7ec88a; --sell:#e08762; --hold:#cdbf8a; --accent:#e8a13c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Spline Sans Mono",ui-monospace,monospace;font-size:14px;line-height:1.5;
+    background-image:radial-gradient(circle at 15% -10%,rgba(232,161,60,.08),transparent 40%);}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px 80px}
+  header{padding:56px 0 32px;border-bottom:1px solid var(--line)}
+  .kicker{color:var(--accent);letter-spacing:.32em;text-transform:uppercase;font-size:11px}
+  h1{font-family:"Fraunces",Georgia,serif;font-weight:900;font-size:clamp(40px,7vw,76px);
+    line-height:.95;margin:.18em 0 .1em;letter-spacing:-.02em}
+  .dateline{color:var(--muted)}
+  .stats{display:flex;flex-wrap:wrap;gap:28px;margin-top:28px}
+  .stat .n{font-family:"Fraunces",serif;font-size:30px;font-weight:600}
+  .stat .l{color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+  section{padding-top:48px}
+  h2{font-family:"Fraunces",serif;font-weight:600;font-size:26px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 20px}
+  .controls{display:flex;gap:12px;margin:18px 0}
+  input[type=search]{flex:1;background:var(--panel);border:1px solid var(--line);
+    color:var(--ink);padding:11px 14px;border-radius:8px;font:inherit}
+  input::placeholder{color:var(--muted)}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    cursor:pointer;user-select:none;position:sticky;top:0;background:var(--bg)}
+  th:hover{color:var(--ink)}
+  tbody tr:hover{background:var(--panel)}
+  .sym{font-weight:600}
+  .name{color:var(--muted);max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;border:1px solid}
+  .b1{color:var(--buy);border-color:var(--buy)}
+  .b2{color:#bcd9a0;border-color:#bcd9a0}
+  .b3{color:var(--hold);border-color:var(--hold)}
+  .b4,.b5{color:var(--sell);border-color:var(--sell)}
+  .num{font-variant-numeric:tabular-nums}
+  .lens-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:22px 24px;margin-bottom:18px}
+  .lens-head{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}
+  .lens-head .t{font-family:"Fraunces",serif;font-size:22px;font-weight:600}
+  .lens-grid{display:grid;grid-template-columns:1fr;gap:16px}
+  .lens{border-left:2px solid var(--accent);padding-left:14px}
+  .lens .fw{color:var(--accent);font-weight:600;margin-bottom:6px}
+  .horizon{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+  .disclaimer{margin-top:56px;padding:20px;border:1px dashed var(--line);border-radius:10px;
+    color:var(--muted);font-size:12px;line-height:1.6}
+  footer{margin-top:40px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:20px}
+  @media(min-width:720px){.lens-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">NASDAQ &amp; NYSE &middot; Analyst Consensus Digest</div>
+    <h1>The Consensus</h1>
+    <div class="dateline">Updated 2026-06-03 &middot; ratings on a 1 (Strong Buy) &ndash; 5 (Strong Sell) scale</div>
+    <div class="stats">
+      <div class="stat"><div class="n num">400</div><div class="l">Symbols tracked</div></div>
+      <div class="stat"><div class="n num">225</div><div class="l">With coverage</div></div>
+      <div class="stat"><div class="n num" style="color:var(--buy)">16</div><div class="l">Strong Buy</div></div>
+      <div class="stat"><div class="n num" style="color:var(--buy)">151</div><div class="l">Buy</div></div>
+    </div>
+  </header>
+
+  
+
+  <section>
+    <h2>Full consensus table</h2>
+    <p class="sub">Lower score = more bullish. Click a header to sort; type to filter.</p>
+    <div class="controls">
+      <input id="q" type="search" placeholder="Filter by symbol or company&hellip;">
+    </div>
+    <table id="tbl">
+      <thead><tr>
+        <th data-k="symbol">Symbol</th>
+        <th data-k="name">Company</th>
+        <th data-k="exchange">Exchange</th>
+        <th data-k="mean" data-num="1">Score</th>
+        <th data-k="label">Consensus</th>
+        <th data-k="analysts" data-num="1"># Analysts</th>
+      </tr></thead>
+      <tbody>
+      
+        <tr>
+          <td class="sym">AIDX</td>
+          <td class="name">20/20 Biolabs, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.00</td>
+          <td><span class="pill b1">Strong Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALOY</td>
+          <td class="name">REalloys Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.00</td>
+          <td><span class="pill b1">Strong Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMOD</td>
+          <td class="name">Alpha Modus Holdings, Inc. - Class A Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.00</td>
+          <td><span class="pill b1">Strong Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMPG</td>
+          <td class="name">Amplitech Group, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.00</td>
+          <td><span class="pill b1">Strong Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEG</td>
+          <td class="name">Aegon Ltd. New York Registry Shares</td>
+          <td>NYSE</td>
+          <td class="num">1.33</td>
+          <td><span class="pill b1">Strong Buy</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGMB</td>
+          <td class="name">AgomAb Therapeutics NV - ADRs representing one common share.</td>
+          <td>NASDAQ</td>
+          <td class="num">1.33</td>
+          <td><span class="pill b1">Strong Buy</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AERO</td>
+          <td class="name">Grupo Aeromexico, S.A.B. de C.V. American Depositary Shares (each representing ten (10) Common Shares)</td>
+          <td>NYSE</td>
+          <td class="num">1.44</td>
+          <td><span class="pill b1">Strong Buy</span></td>
+          <td class="num">9</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABAT</td>
+          <td class="name">American Battery Technology Company - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACCO</td>
+          <td class="name">Acco Brands Corporation Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">1.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADEA</td>
+          <td class="name">Adeia Inc.  - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADGM</td>
+          <td class="name">Adagio Medical Holdings, Inc - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADIL</td>
+          <td class="name">Adial Pharmaceuticals, Inc - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGM</td>
+          <td class="name">Federal Agricultural Mortgage Corporation Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">1.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AII</td>
+          <td class="name">American Integrity Insurance Group, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">1.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIM</td>
+          <td class="name">AIM ImmunoTech Inc. Common Stock</td>
+          <td>NYSE American</td>
+          <td class="num">1.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMIX</td>
+          <td class="name">Autonomix Medical, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIZ</td>
+          <td class="name">Assurant, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">1.57</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABVX</td>
+          <td class="name">Abivax SA - American Depositary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">1.60</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">10</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMRX</td>
+          <td class="name">Amneal Pharmaceuticals, Inc. - Class A Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.60</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACRV</td>
+          <td class="name">Acrivon Therapeutics, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.62</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">8</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGI</td>
+          <td class="name">Alamos Gold Inc. Class A Common Shares</td>
+          <td>NYSE</td>
+          <td class="num">1.62</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">13</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABUS</td>
+          <td class="name">Arbutus Biopharma Corporation - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.67</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACA</td>
+          <td class="name">Arcosa, Inc. Common Stock </td>
+          <td>NYSE</td>
+          <td class="num">1.67</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACOG</td>
+          <td class="name">Alpha Cognition Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.67</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACXP</td>
+          <td class="name">Acurx Pharmaceuticals, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.67</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AENT</td>
+          <td class="name">Alliance Entertainment Holding Corporation - common stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.67</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHR</td>
+          <td class="name">American Healthcare REIT, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">1.69</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">13</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AAPG</td>
+          <td class="name">Ascentage Pharma Group International - American Depository Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">1.75</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">8</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACHV</td>
+          <td class="name">Achieve Life Sciences, Inc.  - Common Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">1.75</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">8</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALGM</td>
+          <td class="name">Allegro MicroSystems, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.75</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">12</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AAON</td>
+          <td class="name">AAON, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.80</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AKBA</td>
+          <td class="name">Akebia Therapeutics, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.80</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">A</td>
+          <td class="name">Agilent Technologies, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">1.83</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">18</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADCT</td>
+          <td class="name">ADC Therapeutics SA Common Shares</td>
+          <td>NYSE</td>
+          <td class="num">1.83</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AKTS</td>
+          <td class="name">Aktis Oncology, Inc. - Common stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.83</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALLT</td>
+          <td class="name">Allot Ltd. - Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">1.83</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABCB</td>
+          <td class="name">Ameris Bancorp Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">1.86</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALGS</td>
+          <td class="name">Aligos Therapeutics, Inc. - Common stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.86</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACMR</td>
+          <td class="name">ACM Research, Inc. - Class A Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.88</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">8</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADPT</td>
+          <td class="name">Adaptive Biotechnologies Corporation - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.88</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">8</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALK</td>
+          <td class="name">Alaska Air Group, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">1.88</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">16</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AER</td>
+          <td class="name">AerCap Holdings N.V. Ordinary Shares</td>
+          <td>NYSE</td>
+          <td class="num">1.89</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">9</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMPX</td>
+          <td class="name">Amprius Technologies, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">1.89</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">9</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABSI</td>
+          <td class="name">Absci Corporation - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.90</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">10</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGBK</td>
+          <td class="name">AGI Inc Class A Common Shares</td>
+          <td>NYSE</td>
+          <td class="num">1.90</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">10</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALKT</td>
+          <td class="name">Alkami Technology, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.90</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">10</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADSK</td>
+          <td class="name">Autodesk, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.91</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">33</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALLO</td>
+          <td class="name">Allogene Therapeutics, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.93</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">14</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADI</td>
+          <td class="name">Analog Devices, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">1.97</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">34</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABBV</td>
+          <td class="name">AbbVie Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">32</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABCL</td>
+          <td class="name">AbCellera Biologics Inc. - Common Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">9</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABEO</td>
+          <td class="name">Abeona Therapeutics Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABOS</td>
+          <td class="name">Acumen Pharmaceuticals, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABTC</td>
+          <td class="name">American Bitcoin Corp. - Class A Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABX</td>
+          <td class="name">Abacus Global Management, Inc. Class A Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACCS</td>
+          <td class="name">ACCESS Newswire Inc. Common Stock</td>
+          <td>NYSE American</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACEL</td>
+          <td class="name">Accel Entertainment, Inc. </td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACET</td>
+          <td class="name">Adicet Bio, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACIC</td>
+          <td class="name">American Coastal Insurance Corporation - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACIU</td>
+          <td class="name">AC Immune SA - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACM</td>
+          <td class="name">AECOM Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">13</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACON</td>
+          <td class="name">Aclarion, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACRS</td>
+          <td class="name">Aclaris Therapeutics, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">10</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACTG</td>
+          <td class="name">Acacia Research Corporation - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACTU</td>
+          <td class="name">Actuate Therapeutics, Inc. - Common stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADUR</td>
+          <td class="name">Aduro Clean Technologies Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADX</td>
+          <td class="name">Adams Diversified Equity Fund Inc.</td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEON</td>
+          <td class="name">AEON Biopharma, Inc. Class A Common Stock</td>
+          <td>NYSE American</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEYE</td>
+          <td class="name">AudioEye, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGD</td>
+          <td class="name">abrdn Global Dynamic Dividend Fund Common Shares of Beneficial Interest</td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGEN</td>
+          <td class="name">Agenus Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGO</td>
+          <td class="name">Assured Guaranty Ltd. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGYS</td>
+          <td class="name">Agilysys, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIFC</td>
+          <td class="name">AI Financial Corporation - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIR</td>
+          <td class="name">AAR Corp. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIRE</td>
+          <td class="name">reAlpha Tech Corp. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIRG</td>
+          <td class="name">Airgain, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIRJ</td>
+          <td class="name">AirJoule Technologies Corporation - Class A Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AISP</td>
+          <td class="name">Airship AI Holdings, Inc - Class A Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALAR</td>
+          <td class="name">Alarum Technologies Ltd. - American Depositary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALDX</td>
+          <td class="name">Aldeyra Therapeutics, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALG</td>
+          <td class="name">Alamo Group, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALH</td>
+          <td class="name">Alliance Laundry Holdings Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">8</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALHC</td>
+          <td class="name">Alignment Healthcare, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">14</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALKS</td>
+          <td class="name">Alkermes plc - Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">17</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALLR</td>
+          <td class="name">Allarity Therapeutics, Inc. - Common stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALLY</td>
+          <td class="name">Ally Financial Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">18</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALMR</td>
+          <td class="name">Alamar Biosciences, Inc. - Class A common stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALMS</td>
+          <td class="name">Alumis Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">11</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALMU</td>
+          <td class="name">Aeluma, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALNT</td>
+          <td class="name">Allient Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALT</td>
+          <td class="name">Altimmune, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">10</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALTG</td>
+          <td class="name">Alta Equipment Group Inc. Class A Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALTI</td>
+          <td class="name">AlTi Global, Inc. - Class A Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALTO</td>
+          <td class="name">Alto Ingredients, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALXO</td>
+          <td class="name">ALX Oncology Holdings Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALZN</td>
+          <td class="name">Alzamend Neuro, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMAL</td>
+          <td class="name">Amalgamated Financial Corp. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMG</td>
+          <td class="name">Affiliated Managers Group, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMPL</td>
+          <td class="name">Amplitude, Inc. - Class A Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">11</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMPY</td>
+          <td class="name">Amplify Energy Corp. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.00</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALNY</td>
+          <td class="name">Alnylam Pharmaceuticals, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.03</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">30</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALAB</td>
+          <td class="name">Astera Labs, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.04</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">26</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALC</td>
+          <td class="name">Alcon Inc. Ordinary Shares</td>
+          <td>NYSE</td>
+          <td class="num">2.04</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">26</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEM</td>
+          <td class="name">Agnico Eagle Mines Limited Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.05</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">22</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALV</td>
+          <td class="name">Autoliv, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.06</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">18</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABT</td>
+          <td class="name">Abbott Laboratories Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.07</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">27</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADUS</td>
+          <td class="name">Addus HomeCare Corporation - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.07</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">14</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMLX</td>
+          <td class="name">Amylyx Pharmaceuticals, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.08</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">12</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACAD</td>
+          <td class="name">ACADIA Pharmaceuticals Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.10</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">21</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMAT</td>
+          <td class="name">Applied Materials, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.10</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">40</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMD</td>
+          <td class="name">Advanced Micro Devices, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.10</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">51</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACHR</td>
+          <td class="name">Archer Aviation Inc. Class A Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.11</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">9</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADTN</td>
+          <td class="name">ADTRAN Holdings, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.11</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">9</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALM</td>
+          <td class="name">Almonty Industries Inc. - Common Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">2.11</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">9</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHCO</td>
+          <td class="name">AdaptHealth Corp.  - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.12</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">8</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AJG</td>
+          <td class="name">Arthur J. Gallagher & Co. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.14</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">22</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACVA</td>
+          <td class="name">ACV Auctions Inc. Class A Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.15</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">13</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMRZ</td>
+          <td class="name">Amrize Ltd Ordinary Shares</td>
+          <td>NYSE</td>
+          <td class="num">2.15</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">20</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AAOI</td>
+          <td class="name">Applied Optoelectronics, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.17</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADAG</td>
+          <td class="name">Adagene Inc. - ADS, each representing 1.25 ordinary shares</td>
+          <td>NASDAQ</td>
+          <td class="num">2.17</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFRM</td>
+          <td class="name">Affirm Holdings, Inc. - Class A Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.19</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">31</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACB</td>
+          <td class="name">Aurora Cannabis Inc. - Common Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">2.20</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACIW</td>
+          <td class="name">ACI Worldwide, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.20</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEIS</td>
+          <td class="name">Advanced Energy Industries, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.20</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">10</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEVA</td>
+          <td class="name">Aeva Technologies, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.20</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMBQ</td>
+          <td class="name">Ambiq Micro, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.20</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AME</td>
+          <td class="name">AMETEK, Inc.</td>
+          <td>NYSE</td>
+          <td class="num">2.20</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">20</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMH</td>
+          <td class="name">American Homes 4 Rent Common Shares of Beneficial Interest</td>
+          <td>NYSE</td>
+          <td class="num">2.21</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">24</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACN</td>
+          <td class="name">Accenture plc Class A Ordinary Shares (Ireland)</td>
+          <td>NYSE</td>
+          <td class="num">2.25</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">28</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACNB</td>
+          <td class="name">ACNB Corporation - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.25</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADMA</td>
+          <td class="name">ADMA Biologics Inc - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.25</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEHR</td>
+          <td class="name">Aehr Test Systems - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.25</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIP</td>
+          <td class="name">Arteris, Inc.  - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.25</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AKR</td>
+          <td class="name">Acadia Realty Trust Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.25</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">8</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALGN</td>
+          <td class="name">Align Technology, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.25</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">16</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMCR</td>
+          <td class="name">Amcor plc Ordinary Shares</td>
+          <td>NYSE</td>
+          <td class="num">2.25</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">12</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMBA</td>
+          <td class="name">Ambarella, Inc. - Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">2.27</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">15</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEP</td>
+          <td class="name">American Electric Power Company, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.29</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">24</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIT</td>
+          <td class="name">Applied Industrial Technologies, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.29</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGIO</td>
+          <td class="name">Agios Pharmaceuticals, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.30</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">10</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMKR</td>
+          <td class="name">Amkor Technology, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.30</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">10</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AAPL</td>
+          <td class="name">Apple Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.33</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">48</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACR</td>
+          <td class="name">ACRES Commercial Realty Corp. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.33</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEBI</td>
+          <td class="name">Aebi Schmidt Holding AG - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.33</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGNT</td>
+          <td class="name">eXp World Holdings, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.33</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIRO</td>
+          <td class="name">AIRO Group Holdings, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.33</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMRC</td>
+          <td class="name">Ameresco, Inc. Class A Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.33</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">12</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADC</td>
+          <td class="name">Agree Realty Corporation Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.35</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">20</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEE</td>
+          <td class="name">Ameren Corporation Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.35</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">17</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACGL</td>
+          <td class="name">Arch Capital Group Ltd. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.40</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">20</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGX</td>
+          <td class="name">Argan, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.40</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALB</td>
+          <td class="name">Albemarle Corporation Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.42</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">24</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABNB</td>
+          <td class="name">Airbnb, Inc. - Class A Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.43</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">42</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGNC</td>
+          <td class="name">AGNC Investment Corp. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.43</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">14</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALGT</td>
+          <td class="name">Allegiant Travel Company - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.45</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">11</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACI</td>
+          <td class="name">Albertsons Companies, Inc. Class A Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.47</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">19</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AKAM</td>
+          <td class="name">Akamai Technologies, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.48</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">25</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AA</td>
+          <td class="name">Alcoa Corporation Common Stock </td>
+          <td>NYSE</td>
+          <td class="num">2.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">14</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABM</td>
+          <td class="name">ABM Industries Incorporated Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">8</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADV</td>
+          <td class="name">Advantage Solutions Inc.  - Class A Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AG</td>
+          <td class="name">First Majestic Silver Corp. Ordinary Shares (Canada)</td>
+          <td>NYSE</td>
+          <td class="num">2.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AKO.B</td>
+          <td class="name">Embotelladora Andina S.A. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AKTX</td>
+          <td class="name">Akari Therapeutics Plc - American Depositary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">2.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALCO</td>
+          <td class="name">Alico, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALVO</td>
+          <td class="name">Alvotech - Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">2.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMP</td>
+          <td class="name">Ameriprise Financial, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.50</td>
+          <td><span class="pill b2">Buy</span></td>
+          <td class="num">14</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALL</td>
+          <td class="name">Allstate Corporation (The) Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.52</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">25</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AAL</td>
+          <td class="name">American Airlines Group, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.54</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">26</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIG</td>
+          <td class="name">American International Group, Inc. New Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.55</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">22</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACHC</td>
+          <td class="name">Acadia Healthcare Company, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.57</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">14</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADAM</td>
+          <td class="name">Adamas Trust, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.57</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AKA</td>
+          <td class="name">a.k.a. Brands Holding Corp. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.60</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMGN</td>
+          <td class="name">Amgen Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.60</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">35</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADNT</td>
+          <td class="name">Adient plc Ordinary Shares </td>
+          <td>NYSE</td>
+          <td class="num">2.62</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">13</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALLE</td>
+          <td class="name">Allegion plc Ordinary Shares</td>
+          <td>NYSE</td>
+          <td class="num">2.62</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">13</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADBE</td>
+          <td class="name">Adobe Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.64</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">39</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFCG</td>
+          <td class="name">Advanced Flower Capital Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.67</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALSN</td>
+          <td class="name">Allison Transmission Holdings, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.70</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">10</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFG</td>
+          <td class="name">American Financial Group, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.71</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALRM</td>
+          <td class="name">Alarm.com Holdings, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.71</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABEV</td>
+          <td class="name">Ambev S.A. American Depositary Shares (Each representing 1 Common Share)</td>
+          <td>NYSE</td>
+          <td class="num">2.73</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">11</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGCO</td>
+          <td class="name">AGCO Corporation Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.73</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">15</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AARD</td>
+          <td class="name">Aardvark Therapeutics, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.75</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">12</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACT</td>
+          <td class="name">Enact Holdings, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.75</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AESI</td>
+          <td class="name">Atlas Energy Solutions Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.75</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">12</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMN</td>
+          <td class="name">AMN Healthcare Services Inc</td>
+          <td>NYSE</td>
+          <td class="num">2.78</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">9</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AD</td>
+          <td class="name">Array Digital Infrastructure, Inc. Common Shares</td>
+          <td>NYSE</td>
+          <td class="num">2.80</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADP</td>
+          <td class="name">Automatic Data Processing, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">2.83</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">18</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AB</td>
+          <td class="name">AllianceBernstein Holding L.P.  Units</td>
+          <td>NYSE</td>
+          <td class="num">2.86</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMC</td>
+          <td class="name">AMC Entertainment Holdings, Inc. Class A Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.86</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABG</td>
+          <td class="name">Asbury Automotive Group Inc Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.91</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">11</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AES</td>
+          <td class="name">The AES Corporation Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.91</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">11</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFL</td>
+          <td class="name">AFLAC Incorporated Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">2.93</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">14</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AAMI</td>
+          <td class="name">Acadian Asset Management Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACLS</td>
+          <td class="name">Axcelis Technologies, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACU</td>
+          <td class="name">Acme United Corporation. Common Stock</td>
+          <td>NYSE American</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADT</td>
+          <td class="name">ADT Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEMD</td>
+          <td class="name">Aethlon Medical, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGL</td>
+          <td class="name">agilon health, inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">17</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHRT</td>
+          <td class="name">AH Realty Trust, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHT</td>
+          <td class="name">Ashford Hospitality Trust Inc Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIN</td>
+          <td class="name">Albany International Corporation Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIRS</td>
+          <td class="name">AirSculpt Technologies, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALEC</td>
+          <td class="name">Alector, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALIT</td>
+          <td class="name">Alight, Inc. Class A Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALRS</td>
+          <td class="name">Alerus Financial Corporation - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">4</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMPH</td>
+          <td class="name">Amphastar Pharmaceuticals, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMR</td>
+          <td class="name">Alpha Metallurgical Resources, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.00</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEO</td>
+          <td class="name">American Eagle Outfitters, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.08</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">12</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFYA</td>
+          <td class="name">Afya Limited - Class A Common Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">3.11</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">9</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AAP</td>
+          <td class="name">Advance Auto Parts Inc.</td>
+          <td>NYSE</td>
+          <td class="num">3.12</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">25</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGRO</td>
+          <td class="name">Adecoagro S.A. Common Shares</td>
+          <td>NYSE</td>
+          <td class="num">3.14</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMBP</td>
+          <td class="name">Ardagh Metal Packaging S.A. Ordinary Shares</td>
+          <td>NYSE</td>
+          <td class="num">3.14</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AM</td>
+          <td class="name">Antero Midstream Corporation Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.25</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">8</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AAT</td>
+          <td class="name">American Assets Trust, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.33</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">3</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACH</td>
+          <td class="name">Accendra Health, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.33</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">6</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADM</td>
+          <td class="name">Archer-Daniels-Midland Company Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.36</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">11</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACRE</td>
+          <td class="name">Ares Commercial Real Estate Corporation Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.43</td>
+          <td><span class="pill b3">Hold</span></td>
+          <td class="num">7</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMCX</td>
+          <td class="name">AMC Global Media Inc. - Class A Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">3.50</td>
+          <td><span class="pill b4">Sell</span></td>
+          <td class="num">8</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMRN</td>
+          <td class="name">Amarin Corporation plc - American Depositary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">3.50</td>
+          <td><span class="pill b4">Sell</span></td>
+          <td class="num">2</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AI</td>
+          <td class="name">C3.ai, Inc. Class A Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.57</td>
+          <td><span class="pill b4">Sell</span></td>
+          <td class="num">14</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACDC</td>
+          <td class="name">ProFrac Holding Corp. - Class A Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">3.60</td>
+          <td><span class="pill b4">Sell</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABR</td>
+          <td class="name">Arbor Realty Trust Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">3.80</td>
+          <td><span class="pill b4">Sell</span></td>
+          <td class="num">5</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALX</td>
+          <td class="name">Alexander's, Inc. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">5.00</td>
+          <td><span class="pill b5">Strong Sell</span></td>
+          <td class="num">1</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACB</td>
+          <td class="name">Artius II Acquisition Inc. - Class A Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACBR</td>
+          <td class="name">Artius II Acquisition Inc. - Rights</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACBU</td>
+          <td class="name">Artius II Acquisition Inc. - Units</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACG</td>
+          <td class="name">ATA Creativity Global - American Depositary Shares, each representing two common shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACI</td>
+          <td class="name">Armada Acquisition Corp. III - Class A Ordinary Share</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACIU</td>
+          <td class="name">Armada Acquisition Corp. III - Units</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACIW</td>
+          <td class="name">Armada Acquisition Corp. III - Warrant</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACO</td>
+          <td class="name">Abony Acquisition Corp. I - Class A Ordinary Share</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACOU</td>
+          <td class="name">Abony Acquisition Corp. I - Units</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACOW</td>
+          <td class="name">Abony Acquisition Corp. I - Warrants</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACP</td>
+          <td class="name">Apogee Acquisition Corp - Class A Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACPR</td>
+          <td class="name">Apogee Acquisition Corp - Rights</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACPU</td>
+          <td class="name">Apogee Acquisition Corp - Units</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AACPW</td>
+          <td class="name">Apogee Acquisition Corp - Warrant</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AAME</td>
+          <td class="name">Atlantic American Corporation - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AAUC</td>
+          <td class="name">Allied Gold Corporation Common Shares</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABLV</td>
+          <td class="name">Able View Global Inc. - Class B Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABLVW</td>
+          <td class="name">Able View Global Inc. - Warrant</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABR$D</td>
+          <td class="name">Arbor Realty Trust 6.375% Series D Cumulative Redeemable Preferred Stock, Liquidation Preference $25.00 per Share</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABR$E</td>
+          <td class="name">Arbor Realty Trust 6.25% Series E Cumulative Redeemable Preferred Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABR$F</td>
+          <td class="name">Arbor Realty Trust 6.25% Series F Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock, Liquidation Preference $25.00 per share</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABTS</td>
+          <td class="name">Abits Group Inc - Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABVC</td>
+          <td class="name">ABVC BioPharma, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ABXL</td>
+          <td class="name">Abacus Global Management, Inc. 9.875% Fixed Rate Senior Notes due 2028</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACAA</td>
+          <td class="name">Averin Capital Acquisition Corp. - Class A Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACAAU</td>
+          <td class="name">Averin Capital Acquisition Corp. - Units</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACAAW</td>
+          <td class="name">Averin Capital Acquisition Corp. - Warrants</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACCL</td>
+          <td class="name">Acco Group Holdings Limited - Class A Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACFN</td>
+          <td class="name">Acorn Energy, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACGC</td>
+          <td class="name">ACP Holdings Acquisition Corp. - Class A Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACGCU</td>
+          <td class="name">ACP Holdings Acquisition Corp. - Units</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACGCW</td>
+          <td class="name">ACP Holdings Acquisition Corp. - Warrants</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACGLN</td>
+          <td class="name">Arch Capital Group Ltd. - Depositary Shares, each Representing a 1/1,000th Interest in a 4.550% Non-Cumulative Preferred Share, Series G</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACGLO</td>
+          <td class="name">Arch Capital Group Ltd. - Depositary Shares Each Representing 1/1,000th Interest in a Share of5.45% Non-Cumulative Preferred Shares, Series F</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACHR.W</td>
+          <td class="name">Archer Aviation Inc. Redeemable Warrants, each whole warrant exercisable for one Class A common stock at an exercise price of $11.50</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACNT</td>
+          <td class="name">Ascent Industries Co. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACONW</td>
+          <td class="name">Aclarion, Inc. - Warrant</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACP</td>
+          <td class="name">abrdn Income Credit Strategies Fund Common Shares</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACP$A</td>
+          <td class="name">abrdn Income Credit Strategies Fund 5.250% Series A Perpetual Preferred Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACR$C</td>
+          <td class="name">ACRES Commercial Realty Corp. 8.625% Fixed-to-Floating Series C Cumulative Redeemable Preferred Stock </td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACR$D</td>
+          <td class="name">ACRES Commercial Realty Corp. 7.875% Series D Cumulative Redeemable Preferred Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ACV</td>
+          <td class="name">Virtus Diversified Income & Convertible Fund Common Shares of Beneficial Interest</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADAC</td>
+          <td class="name">American Drive Acquisition Company - Class A Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADACU</td>
+          <td class="name">American Drive Acquisition Company - Units</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADACW</td>
+          <td class="name">American Drive Acquisition Company - Warrant</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADAMG</td>
+          <td class="name">Adamas Trust, Inc. - 9.125% Senior Notes Due 2030</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADAMH</td>
+          <td class="name">Adamas Trust, Inc. - 9.875% Senior Notes Due 2030</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADAMI</td>
+          <td class="name">Adamas Trust, Inc. - 9.125% Senior Notes Due 2029</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADAML</td>
+          <td class="name">Adamas Trust, Inc. - 6.875% Series F Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock, $0.01 par value per share</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADAMM</td>
+          <td class="name">Adamas Trust, Inc. - 7.875% Series E Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADAMN</td>
+          <td class="name">Adamas Trust, Inc. - 8.00% Series D Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADAMO</td>
+          <td class="name">Adamas Trust, Inc. - 9.250% Senior Notes Due 2031</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADAMZ</td>
+          <td class="name">Adamas Trust, Inc. - 7.000% Series G Cumulative Redeemable Preferred Stock, $0.01 par value per share</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADC$A</td>
+          <td class="name">Agree Realty Corporation Depositary Shares, each representing 1/1,000th of a 4.250% Series A Cumulative Redeemable Preferred Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADSE</td>
+          <td class="name">ADS-TEC ENERGY PLC - Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADSEW</td>
+          <td class="name">ADS-TEC ENERGY PLC - Warrant</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADTX</td>
+          <td class="name">Aditxt, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADVB</td>
+          <td class="name">Advanced Biomed Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ADXN</td>
+          <td class="name">Addex Therapeutics Ltd - American Depositary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEAQ</td>
+          <td class="name">Activate Energy Acquisition Corp. - Class A Ordinary Share</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEAQU</td>
+          <td class="name">Activate Energy Acquisition Corp. - Unit</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEAQW</td>
+          <td class="name">Activate Energy Acquisition Corp. - Warrant</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEC</td>
+          <td class="name">Anfield Energy Inc. - Common Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEF</td>
+          <td class="name">abrdn Emerging Markets ex-China Fund, Inc. Common Stock</td>
+          <td>NYSE American</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEFC</td>
+          <td class="name">Aegon Funding Company LLC 5.10% Subordinated Notes due 2049</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEHL</td>
+          <td class="name">Antelope Enterprise Holdings Limited - Class A Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEI</td>
+          <td class="name">Alset Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AENTW</td>
+          <td class="name">Alliance Entertainment Holding Corporation - Warrants</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AERT</td>
+          <td class="name">Aeries Technology, Inc. - Class A Ordinary Share</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AERTW</td>
+          <td class="name">Aeries Technology, Inc. - Warrant</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AEXA</td>
+          <td class="name">American Exceptionalism Acquisition Corp. A Class A Ordinary Shares</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFB</td>
+          <td class="name">AllianceBernstein National Municipal Income Fund Inc</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFBI</td>
+          <td class="name">Affinity Bancshares, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFGB</td>
+          <td class="name">American Financial Group, Inc. 5.875% Subordinated Debentures due 2059</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFGC</td>
+          <td class="name">American Financial Group, Inc. 5.125% Subordinated Debentures due 2059</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFGD</td>
+          <td class="name">American Financial Group, Inc. 5.625% Subordinated Debentures due 2060</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFGE</td>
+          <td class="name">American Financial Group, Inc. 4.500% Subordinated Debentures due 2060</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFJK</td>
+          <td class="name">Aimei Health Technology Co., Ltd - Ordinary Share</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFJKR</td>
+          <td class="name">Aimei Health Technology Co., Ltd - Right</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFJKU</td>
+          <td class="name">Aimei Health Technology Co., Ltd - Unit</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFRI</td>
+          <td class="name">Forafric Global PLC - Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AFRIW</td>
+          <td class="name">Forafric Global PLC - Warrants</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGCC</td>
+          <td class="name">Agencia Comercial Spirits Ltd - Class A Ordinary Share</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGIG</td>
+          <td class="name">Abundia Global Impact Group Inc. Common stock</td>
+          <td>NYSE American</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGM$D</td>
+          <td class="name">Federal Agricultural Mortgage Corporation 5.700% Non-Cumulative Preferred Stock, Series D</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGM$E</td>
+          <td class="name">Federal Agricultural Mortgage Corporation 5.750% Non-Cumulative Preferred Stock, Series E</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGM$F</td>
+          <td class="name">Federal Agricultural Mortgage Corporation 5.250% Non-Cumulative Preferred Stock, Series F</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGM$G</td>
+          <td class="name">Federal Agricultural Mortgage Corporation 4.875% Non-Cumulative Preferred Stock, Series G</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGM$H</td>
+          <td class="name">Federal Agricultural Mortgage Corporation 6.500% Non-Cumulative Preferred Stock, Series H</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGM$I</td>
+          <td class="name">Federal Agricultural Mortgage Corporation 6.875% Non-Cumulative Preferred Stock, Series I</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGM.A</td>
+          <td class="name">Federal Agricultural Mortgage Corporation Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGMH</td>
+          <td class="name">AGM Group Holdings Inc. - Class A Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGNCL</td>
+          <td class="name">AGNC Investment Corp. - Depositary Shares Each Representing a 1/1,000th Interest in a Share of 7.75% Series G Fixed-Rate Reset Cumulative Redeemable Preferred Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGNCM</td>
+          <td class="name">AGNC Investment Corp. - Depositary Shares rep 6.875% Series D Fixed-to-Floating Cumulative Redeemable Preferred Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGNCN</td>
+          <td class="name">AGNC Investment Corp. - Depositary Shares Each Representing a 1/1,000th Interest in a Share of 7.00% Series C Fixed-To-Floating Rate Cumulative Redeemable Preferred Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGNCO</td>
+          <td class="name">AGNC Investment Corp. - Depositary Shares, each representing a 1/1,000th interest in a share of Series E Fixed-to-Floating Cumulative Redeemable Preferred Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGNCP</td>
+          <td class="name">AGNC Investment Corp. - Depositary Shares Each Representing a 1/1,000th Interest in a Share of 6.125% Series F Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGNCZ</td>
+          <td class="name">AGNC Investment Corp. - Depositary Shares Each Representing a 1/1,000th Interest in a Share of 8.75% Series H Fixed-Rate Cumulative Redeemable Preferred Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGPU</td>
+          <td class="name">Axe Compute Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AGRZ</td>
+          <td class="name">Agroz Inc. - Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHG</td>
+          <td class="name">Akso Health Group - American Depositary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHL$D</td>
+          <td class="name">Aspen Insurance Holdings Limited 5.625% Perpetual Non-Cumulative Preference Shares</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHL$E</td>
+          <td class="name">Aspen Insurance Holdings Limited Depositary Shares, each representing a 1/1000th interest in a share of 5.625% Perpetual Non-Cumulative Preference Shares</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHL$F</td>
+          <td class="name">Aspen Insurance Holdings Limited Depositary Shares, each representing a 1/1,000th Interest in a 7.00% Perpetual Non-Cumulative Preference Share</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHMA</td>
+          <td class="name">Ambitions Enterprise Management Co. L.L.C - Class A Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHRT$A</td>
+          <td class="name">AH Realty Trust, Inc. 6.75% Series A Cumulative Redeemable Perpetual Preferred Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHT$D</td>
+          <td class="name">Ashford Hospitality Trust Inc 8.45% Series D Cumulative Preferred Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHT$F</td>
+          <td class="name">Ashford Hospitality Trust Inc 7.375% Series F Cumulative Preferred Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHT$G</td>
+          <td class="name">Ashford Hospitality Trust Inc 7.375% Series G Cumulative Preferred Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHT$H</td>
+          <td class="name">Ashford Hospitality Trust Inc 7.50% Series H Cumulative Preferred Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AHT$I</td>
+          <td class="name">Ashford Hospitality Trust Inc 7.50% Series I Cumulative Preferred Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIAI</td>
+          <td class="name">AIAI Holdings Corporation - Class A common stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIB</td>
+          <td class="name">BlockchAIn Digital Infrastructure, Inc Common Shares</td>
+          <td>NYSE American</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIFA</td>
+          <td class="name">All In FutureTech Alliance, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIFF</td>
+          <td class="name">Firefly Neuroscience, Inc.  - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIFU</td>
+          <td class="name">AIFU Inc. - Class A Ordinary Share</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIHS</td>
+          <td class="name">Senmiao Technology Limited - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIIA</td>
+          <td class="name">AI Infrastructure Acquisition Corp. Class A Ordinary Shares</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIIA.R</td>
+          <td class="name">AI Infrastructure Acquisition Corp. Rights, each entitling the holder to receive one-fifth (1/5) of one Class A Ordinary Share</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIIA.U</td>
+          <td class="name">AI Infrastructure Acquisition Corp. Units, each consisting of one Class A Ordinary Share and one Right</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIIO</td>
+          <td class="name">Robo.ai Inc. - Class B Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIIOW</td>
+          <td class="name">Robo.ai Inc. - Warrant</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIIR</td>
+          <td class="name">Air Global PLC - Ordinary shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIMD</td>
+          <td class="name">Ainos, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIMDW</td>
+          <td class="name">Ainos, Inc. - warrants</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIO</td>
+          <td class="name">Virtus Artificial Intelligence & Technology Opportunities Fund Common Shares of Beneficial Interest</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIOS</td>
+          <td class="name">AIOS Tech Inc. - Class A Common Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIOT</td>
+          <td class="name">PowerFleet, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIRI</td>
+          <td class="name">Air Industries Group Common Stock</td>
+          <td>NYSE American</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIRJW</td>
+          <td class="name">AirJoule Technologies Corporation - Warrant</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIRT</td>
+          <td class="name">Air T, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIRTP</td>
+          <td class="name">Air T, Inc. - Trust Preferred Securities</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AISPW</td>
+          <td class="name">Airship AI Holdings, Inc - Warrants</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIV</td>
+          <td class="name">Apartment Investment and Management Company Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIXC</td>
+          <td class="name">AIxCrypto Holdings, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIXI</td>
+          <td class="name">XIAO-I Corporation - American Depositary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AIZN</td>
+          <td class="name">Assurant, Inc. 5.25% Subordinated Notes due 2061</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AKAN</td>
+          <td class="name">Akanda Corp. - Common Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AKO.A</td>
+          <td class="name">Embotelladora Andina S.A. Common Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALB$A</td>
+          <td class="name">Albemarle Corporation Depositary Shares each representing a 1/20th of 7.25% Series A Mandatory Convertible Preferred Stock</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALBT</td>
+          <td class="name">Avalon GloboCare Corp. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALDF</td>
+          <td class="name">Aldel Financial II Inc. - Class A Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALDFU</td>
+          <td class="name">Aldel Financial II Inc. - Units</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALDFW</td>
+          <td class="name">Aldel Financial II Inc. - Warrants</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALF</td>
+          <td class="name">Centurion Acquisition Corp. - Class A Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALFUU</td>
+          <td class="name">Centurion Acquisition Corp. - Unit</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALFUW</td>
+          <td class="name">Centurion Acquisition Corp. - Warrant</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALIS</td>
+          <td class="name">Calisa Acquisition Corp - Ordinary shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALISR</td>
+          <td class="name">Calisa Acquisition Corp - Right</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALISU</td>
+          <td class="name">Calisa Acquisition Corp - Units</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALL$B</td>
+          <td class="name">Allstate Corporation (The) 5.100% Fixed-to-Floating Rate Subordinated Debentures due 2053</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALL$H</td>
+          <td class="name">Allstate Corporation (The) Depositary Shares each representing a 1/1,000th interest in a share of Fixed Rate Noncumulative Perpetual Preferred Stock, Series H</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALL$I</td>
+          <td class="name">Allstate Corporation (The) Depositary Shares each representing a 1/1,000th interest in a share of Fixed Rate Noncumulative Perpetual Preferred Stock, Series I</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALL$J</td>
+          <td class="name">Allstate Corporation (The) Depositary Shares each representing a 1/1,000th interest in a share of Fixed Rate Noncumulative Perpetual Preferred Stock, Series J</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALOT</td>
+          <td class="name">AstroNova, Inc. - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALOV</td>
+          <td class="name">Aldabra 4 Liquidity Opportunity Vehicle, Inc. - Class A Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALOVU</td>
+          <td class="name">Aldabra 4 Liquidity Opportunity Vehicle, Inc. - Units</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALOVW</td>
+          <td class="name">Aldabra 4 Liquidity Opportunity Vehicle, Inc. - Warrants</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALP</td>
+          <td class="name">Alpha Compute Corp  - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALPS</td>
+          <td class="name">ALPS Group Inc - Ordinary Share</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALTG$A</td>
+          <td class="name">Alta Equipment Group Inc. Depositary Shares (each representing 1/1000th in a share of 10% Series A Cumulative Perpetual Preferred Stock)</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALUB</td>
+          <td class="name">Alussa Energy Acquisition Corp. II Class A Ordinary Shares</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALUB.U</td>
+          <td class="name">Alussa Energy Acquisition Corp. II Units, each consisting of one Class A ordinary share and one-third of one redeemable warrant</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALUB.W</td>
+          <td class="name">Alussa Energy Acquisition Corp. II Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50 per share</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">ALVOW</td>
+          <td class="name">Alvotech - Warrant</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMAN</td>
+          <td class="name">Amanat Acquisition Corp - Class A Ordinary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMBO</td>
+          <td class="name">Ambow Education Holding Ltd. American Depository Shares (each representing twenty (20) Class A Ordinary Shares)</td>
+          <td>NYSE American</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMBR</td>
+          <td class="name">Amber International Holding Limited - American Depositary Shares</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMCI</td>
+          <td class="name">AMC Robotics Corporation - Common Stock</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMH$G</td>
+          <td class="name">American Homes 4 Rent Series G cumulative redeemable perpetual preferred shares of beneficial interest</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMH$H</td>
+          <td class="name">American Homes 4 Rent Series H cumulative redeemable perpetual Preferred Shares of Beneficial Interest</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMODW</td>
+          <td class="name">Alpha Modus Holdings, Inc. - Warrant</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMPGR</td>
+          <td class="name">Amplitech Group, Inc. - Series A Right</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMPGZ</td>
+          <td class="name">Amplitech Group, Inc. - Series B Right</td>
+          <td>NASDAQ</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+        <tr>
+          <td class="sym">AMPX.W</td>
+          <td class="name">Amprius Technologies, Inc. Warrants to purchase one share of Common Stock at an exercise price of $11.50 per share</td>
+          <td>NYSE</td>
+          <td class="num">&mdash;</td>
+          <td><span class="pill b3">No coverage</span></td>
+          <td class="num">0</td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </section>
+
+  <div class="disclaimer">
+    <strong>Not investment advice.</strong> This page aggregates third-party analyst
+    ratings and presents general, impersonal commentary generated by an AI model
+    through named investing frameworks. It is for information and education only,
+    is not personalized to anyone&rsquo;s situation, and is not a recommendation to buy
+    or sell any security. The framework commentary does not represent the views of
+    any real person. Data may be delayed or inaccurate. Do your own research and
+    consult a licensed professional.
+  </div>
+
+  <footer>The Consensus &middot; generated 2026-06-03 &middot; data via third-party sources</footer>
+</div>
+
+<script>
+  // search
+  const q = document.getElementById('q'), rows = [...document.querySelectorAll('#tbl tbody tr')];
+  q.addEventListener('input', () => {
+    const v = q.value.toLowerCase();
+    rows.forEach(r => { r.style.display = r.textContent.toLowerCase().includes(v) ? '' : 'none'; });
+  });
+  // sort
+  let dir = 1;
+  document.querySelectorAll('#tbl th').forEach((th, i) => th.addEventListener('click', () => {
+    const num = th.dataset.num, body = document.querySelector('#tbl tbody');
+    dir = -dir;
+    [...body.querySelectorAll('tr')].sort((a, b) => {
+      let x = a.children[i].textContent.trim(), y = b.children[i].textContent.trim();
+      if (num) { x = parseFloat(x) || 1e9; y = parseFloat(y) || 1e9; return (x - y) * dir; }
+      return x.localeCompare(y) * dir;
+    }).forEach(r => body.appendChild(r));
+  }));
+</script>
+</body>
+</html>
