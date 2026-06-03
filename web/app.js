@@ -87,6 +87,10 @@ function columns() {
       headerName: "Identity", children: [
         { colId: "symbol", field: "symbol", headerName: "Sym", pinned: "left", width: 92, cellRenderer: R.sym, ...TXT, filterValueGetter: p => p.data.symbol },
         { colId: "name", field: "name", headerName: "Company", pinned: "left", width: 210, cellRenderer: R.name, ...TXT },
+      ]
+    },
+    {
+      headerName: "Classification", children: [
         { colId: "sector", field: "sector", headerName: "Sector", width: 150, ...TXT },
         { colId: "industry", field: "industry", headerName: "Industry", width: 190, ...TXT, hide: true },
         { colId: "exchange", field: "exchange", headerName: "Exch", width: 110, ...TXT, hide: true },
