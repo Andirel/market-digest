@@ -10,7 +10,7 @@ permissions:
   contents: write
 concurrency:
   group: seedlab-publish
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -30,10 +30,28 @@ jobs:
         if: always()
         run: |
           mkdir -p publish/seedlab
-          for f in index.html data.json data.js; do
+          for f in index.html styles.css app.js data.json data.js; do
             if [ -f seedlab/$f ]; then cp seedlab/$f publish/seedlab/; fi
           done
           if [ -d seedlab/history ]; then cp -r seedlab/history publish/seedlab/; fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('publish/seedlab/data.json')
+          if p.exists():
+              d=json.loads(p.read_text())
+              fields=['ticker','price','asOf','status','rsi','momentum','low52','high52','ratings']
+              s={k:d.get(k) for k in ['generatedAt','coverage','schedule','researchAsOf']}
+              s['assets']=[{k:r.get(k) for k in fields} for r in d.get('assets',[])+d.get('core',[])]
+              Path('publish/seedlab/status.json').write_text(json.dumps(s,indent=2))
+          PY
+      - name: Preserve downloadable research build for QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seedlab-site
+          path: publish/seedlab/
+          retention-days: 30
       - name: Publish Seedlab; preserve existing pages and snapshots
         if: always()
         uses: peaceiris/actions-gh-pages@v4
