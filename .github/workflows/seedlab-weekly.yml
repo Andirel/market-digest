@@ -28,8 +28,10 @@ jobs:
         id: refresh
         continue-on-error: true
         run: python seedlab/build.py
+      - name: Verify allocation and market-data invariants
+        id: qa
+        run: node seedlab/qa.js
       - name: Prepare website without changing existing dashboard
-        if: always()
         run: |
           mkdir -p publish/seedlab
           for f in index.html styles.css app.js data.json data.js; do
@@ -40,27 +42,54 @@ jobs:
           import json
           from pathlib import Path
           p=Path('publish/seedlab/data.json')
-          if p.exists():
-              d=json.loads(p.read_text())
-              fields=['ticker','price','asOf','status','rsi','momentum','low52','high52','ratings']
-              s={k:d.get(k) for k in ['generatedAt','coverage','schedule','researchAsOf']}
-              s['assets']=[{k:r.get(k) for k in fields} for r in d.get('assets',[])+d.get('core',[])]
-              Path('publish/seedlab/status.json').write_text(json.dumps(s,indent=2))
+          d=json.loads(p.read_text())
+          fields=['ticker','price','asOf','status','rsi','momentum','low52','high52','ratings']
+          s={k:d.get(k) for k in ['generatedAt','coverage','schedule','researchAsOf']}
+          s['assets']=[{k:r.get(k) for k in fields} for r in d.get('assets',[])+d.get('core',[])]
+          s['qa']='800 allocation combinations passed: budget, position caps, theme caps, crypto caps, horizon, and data invariants.'
+          Path('publish/seedlab/status.json').write_text(json.dumps(s,indent=2))
           PY
       - name: Preserve downloadable research build for QA
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: seedlab-site
           path: publish/seedlab/
           retention-days: 30
       - name: Publish Seedlab; preserve existing pages and snapshots
-        if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./publish
           keep_files: true
+      - name: Verify the public dashboard and dated snapshot are reachable
+        run: |
+          python - <<'PY'
+          import json,time,urllib.request
+          from pathlib import Path
+          base='https://andirel.github.io/market-digest/seedlab/'
+          expected=json.loads(Path('publish/seedlab/data.json').read_text())['generatedAt']
+          def get(path):
+              req=urllib.request.Request(base+path+'?qa='+str(time.time_ns()),headers={'Cache-Control':'no-cache','User-Agent':'Seedlab-deployment-healthcheck'})
+              with urllib.request.urlopen(req,timeout=25) as r:
+                  assert r.status==200
+                  return r.read().decode('utf-8')
+          for attempt in range(18):
+              try:
+                  html=get('index.html')
+                  assert 'seedlab' in html.lower()
+                  js=get('app.js')
+                  assert 'SeedlabModel' in js
+                  d=json.loads(get('data.json'))
+                  assert len(d['assets'])==30 and len(d['core'])==2
+                  assert d['generatedAt']>=expected,'CDN still serving preceding snapshot'
+                  print('LIVE VERIFIED: '+base)
+                  print('Snapshot: '+d['generatedAt']+'; coverage: '+json.dumps(d['coverage']))
+                  break
+              except Exception as e:
+                  print('Publication check '+str(attempt+1)+': '+str(e))
+                  if attempt==17: raise
+                  time.sleep(10)
+          PY
       - name: Make data failure visible in Actions
         if: steps.refresh.outcome == 'failure'
         run: exit 1
