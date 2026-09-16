@@ -1,0 +1,46 @@
+name: seedlab-weekly
+on:
+  push:
+    branches: [main]
+    paths: ['seedlab/**', '.github/workflows/seedlab-weekly.yml']
+  schedule:
+    - cron: '17 12 * * 1'
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: seedlab-publish
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install public-market research dependencies
+        run: pip install 'yfinance>=0.2.65,<2' 'pandas>=2.2,<3' 'numpy>=2,<3'
+      - name: Calculate and validate snapshot
+        id: refresh
+        continue-on-error: true
+        run: python seedlab/refresh.py
+      - name: Prepare website without changing existing dashboard
+        if: always()
+        run: |
+          mkdir -p publish/seedlab
+          for f in index.html data.json data.js; do
+            if [ -f seedlab/$f ]; then cp seedlab/$f publish/seedlab/; fi
+          done
+          if [ -d seedlab/history ]; then cp -r seedlab/history publish/seedlab/; fi
+      - name: Publish Seedlab; preserve existing pages and snapshots
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./publish
+          keep_files: true
+      - name: Make data failure visible in Actions
+        if: steps.refresh.outcome == 'failure'
+        run: exit 1
