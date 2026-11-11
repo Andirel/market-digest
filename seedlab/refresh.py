@@ -86,8 +86,6 @@ def extend_crypto_history(obj,hist,expected):
     else:recent.index=recent.index.tz_convert('UTC')
     recent=recent.sort_index()
     recent['_day']=[x.date() for x in recent.index]
-    counts=recent.groupby('_day').size()
-    print('CRYPTO HOURLY '+str(getattr(obj,'ticker','?'))+' buckets: '+', '.join(f'{day}:{int(count)}' for day,count in counts.tail(5).items()),flush=True)
 
     existing_valid={x.date() for x in usable.index}
     additions=[]
