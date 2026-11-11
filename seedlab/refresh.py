@@ -74,7 +74,8 @@ def extend_crypto_history(obj,hist,expected):
     hist=hist.copy()
     if hist.index.tz is None:hist.index=hist.index.tz_localize('UTC')
     else:hist.index=hist.index.tz_convert('UTC')
-    if not hist.empty and hist.index[-1].date()>=expected:return hist
+    usable=hist.dropna(subset=['Close'])
+    if not usable.empty and usable.index[-1].date()>=expected:return hist
     recent=obj.history(period='10d',interval='1h',auto_adjust=False,actions=False,raise_errors=True)
     if recent is None or recent.empty:return hist
     recent=recent.copy()
