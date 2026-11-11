@@ -53,6 +53,21 @@ def num(x):
         return round(x,6) if math.isfinite(x) else None
     except (TypeError,ValueError): return None
 
+def expected_session(kind, now):
+    """Latest fully completed daily session for the instrument type."""
+    if kind == 'crypto':
+        return now.date() - dt.timedelta(days=1)
+    import pandas_market_calendars as mcal
+    calendar=mcal.get_calendar('NYSE')
+    schedule=calendar.schedule(
+        start_date=now.date()-dt.timedelta(days=14),
+        end_date=now.date(),
+    )
+    completed=schedule[schedule['market_close'] <= now]
+    if completed.empty:
+        raise RuntimeError('Could not determine latest completed NYSE session')
+    return completed.index[-1].date()
+
 def rsi(values,n=14):
     a=[float(x) for x in values]
     if len(a)<n+1:return None
@@ -70,11 +85,8 @@ def calculate(asset,old,now):
     try:
         obj=yf.Ticker(s);hist=obj.history(period='2y',interval='1d',auto_adjust=False,actions=False,raise_errors=True)
         if hist is None or hist.empty:raise ValueError('Empty history')
-        if asset['kind']=='crypto':cutoff=now.date()
-        else:
-            local=now.astimezone(ZoneInfo('America/New_York'))
-            cutoff=local.date()+dt.timedelta(days=1 if local.hour>=17 else 0)
-        hist=hist[[x.date()<cutoff for x in hist.index]].dropna(subset=['Close'])
+        expected=expected_session(asset['kind'],now)
+        hist=hist[[x.date()<=expected for x in hist.index]].dropna(subset=['Close'])
         if len(hist)<60:raise ValueError('Insufficient complete daily bars')
         c=hist['Close'].astype(float);p=float(c.iloc[-1]);end=hist.index[-1].date()
         one=hist[[x.date()>end-dt.timedelta(days=365) for x in hist.index]]
@@ -100,7 +112,7 @@ def calculate(asset,old,now):
             except Exception:pass
         year=365 if asset['kind']=='crypto' else 252
         vol=np.log(c/c.shift(1)).dropna().tail(year).std()*np.sqrt(year)*100
-        row.update(price=num(p),asOf=end.isoformat(),status='fresh' if (now.date()-end).days<=7 else 'stale',low52=num(lo),high52=num(hi),rangePosition=num((p-lo)/(hi-lo)*100) if hi>lo else None,belowHigh=num((p/hi-1)*100),weekChange=change(7),monthChange=change(30),macd=num(macd.iloc[-1]),signal=num(signal.iloc[-1]),histogram=num(d),histogramPrevious=num(prev),momentum='Bullish' if d>0 else ('Bearish' if d<0 else 'Neutral'),crossover=cross,rsi=num(rsi(c)),annualVolatility=num(vol),history=[dict(date=i.date().isoformat(),close=num(v)) for i,v in c.tail(180).items()],macdHistory=[dict(date=i.date().isoformat(),macd=num(macd.loc[i]),signal=num(signal.loc[i]),histogram=num(delta.loc[i])) for i in c.tail(90).index],ratings=ratings,marketCap=num(info.get('marketCap')),forwardPE=num(info.get('forwardPE')),trailingPE=num(info.get('trailingPE')),priceToSales=num(info.get('priceToSalesTrailing12Months')),revenueGrowth=num(info.get('revenueGrowth')),profitMargin=num(info.get('profitMargins')),freeCashFlow=num(info.get('freeCashflow')),totalCash=num(info.get('totalCash')),totalDebt=num(info.get('totalDebt')),targetMean=num(info.get('targetMeanPrice')),targetLow=num(info.get('targetLowPrice')),targetHigh=num(info.get('targetHighPrice')),targetCount=num(info.get('numberOfAnalystOpinions')),circulatingSupply=num(info.get('circulatingSupply')),maxSupply=num(info.get('maxSupply')),lastSuccessfulAt=now.isoformat(),fundamentalsRetrievedAt=now.isoformat(),financialPeriod=dt.datetime.fromtimestamp(info['mostRecentQuarter'],dt.timezone.utc).date().isoformat() if info.get('mostRecentQuarter') else None)
+        row.update(price=num(p),asOf=end.isoformat(),expectedAsOf=expected.isoformat(),status='fresh' if end==expected else 'stale',low52=num(lo),high52=num(hi),rangePosition=num((p-lo)/(hi-lo)*100) if hi>lo else None,belowHigh=num((p/hi-1)*100),weekChange=change(7),monthChange=change(30),macd=num(macd.iloc[-1]),signal=num(signal.iloc[-1]),histogram=num(d),histogramPrevious=num(prev),momentum='Bullish' if d>0 else ('Bearish' if d<0 else 'Neutral'),crossover=cross,rsi=num(rsi(c)),annualVolatility=num(vol),history=[dict(date=i.date().isoformat(),close=num(v)) for i,v in c.tail(180).items()],macdHistory=[dict(date=i.date().isoformat(),macd=num(macd.loc[i]),signal=num(signal.loc[i]),histogram=num(delta.loc[i])) for i in c.tail(90).index],ratings=ratings,marketCap=num(info.get('marketCap')),forwardPE=num(info.get('forwardPE')),trailingPE=num(info.get('trailingPE')),priceToSales=num(info.get('priceToSalesTrailing12Months')),revenueGrowth=num(info.get('revenueGrowth')),profitMargin=num(info.get('profitMargins')),freeCashFlow=num(info.get('freeCashflow')),totalCash=num(info.get('totalCash')),totalDebt=num(info.get('totalDebt')),targetMean=num(info.get('targetMeanPrice')),targetLow=num(info.get('targetLowPrice')),targetHigh=num(info.get('targetHighPrice')),targetCount=num(info.get('numberOfAnalystOpinions')),circulatingSupply=num(info.get('circulatingSupply')),maxSupply=num(info.get('maxSupply')),lastSuccessfulAt=now.isoformat(),fundamentalsRetrievedAt=now.isoformat(),financialPeriod=dt.datetime.fromtimestamp(info['mostRecentQuarter'],dt.timezone.utc).date().isoformat() if isinstance(info.get('mostRecentQuarter'),(int,float)) else None)
         if asset['kind']!='equity':
             for k in ['ratings','targetMean','targetLow','targetHigh','targetCount','forwardPE','trailingPE','priceToSales','revenueGrowth','profitMargin','freeCashFlow','totalCash','totalDebt']:row[k]=None
         changes=[]
@@ -128,11 +140,18 @@ def main():
     by={a['ticker']:a for a in old.get('assets',[])+old.get('core',[])}
     rows=[]
     for a in universe()+CORE:
-        rows.append(calculate(a,by.get(a['ticker']),now));time.sleep(.5)
-    payload=dict(version=1,generatedAt=now.isoformat(),previousSnapshotAt=old.get('generatedAt'),assets=rows[:30],core=rows[30:],schedule='Weekly Monday morning; 12:17 UTC / 7:17 AM CDT / 6:17 AM CST',coverage=dict(total=len(rows),fresh=sum(a.get('status')=='fresh' for a in rows),stale=sum(a.get('status')=='stale' for a in rows),unavailable=sum(a.get('status')=='unavailable' for a in rows)),researchAsOf='2026-09-16',researchNotes='Prices, daily technicals and available estimates refresh weekly. Editorial theses and risk scores are dated research judgments, not automatically re-underwritten.',omitted='ARM, SE and RDDT were left out to reduce overlap and keep the research universe at 30. VTI and SGOV are additional allocation anchors.')
+        row=None
+        for attempt in range(3):
+            row=calculate(a,by.get(a['ticker']),now)
+            if row.get('status')=='fresh':break
+            if attempt<2:time.sleep(2**attempt)
+        rows.append(row);time.sleep(.5)
+    payload=dict(version=2,generatedAt=now.isoformat(),previousSnapshotAt=old.get('generatedAt'),assets=rows[:30],core=rows[30:],schedule='Weekly Monday morning; 12:17 UTC / 7:17 AM CDT / 6:17 AM CST',coverage=dict(total=len(rows),fresh=sum(a.get('status')=='fresh' for a in rows),stale=sum(a.get('status')=='stale' for a in rows),unavailable=sum(a.get('status')=='unavailable' for a in rows)),researchAsOf='2026-09-16',researchNotes='Prices, daily technicals and available estimates refresh weekly. Editorial theses and risk scores are dated research judgments, not automatically re-underwritten.',omitted='ARM, SE and RDDT were left out to reduce overlap and keep the research universe at 30. VTI and SGOV are additional allocation anchors.')
     text=json.dumps(payload,separators=(',',':'),allow_nan=False)
     (ROOT/'data.json').write_text(text,encoding='utf-8');(ROOT/'data.js').write_text('window.SEED_DATA='+text+';',encoding='utf-8')
     h=ROOT/'history';h.mkdir(exist_ok=True);(h/f'{now.date()}.json').write_text(text,encoding='utf-8')
     print(json.dumps(payload['coverage']))
-    if not payload['coverage']['fresh']:raise SystemExit('No fresh quotes. Failure flags were saved; do not report a successful data refresh.')
+    if payload['coverage'] != {'total':32,'fresh':32,'stale':0,'unavailable':0}:
+        affected=[f"{a['ticker']}({a.get('status')}, asOf={a.get('asOf')}, expected={a.get('expectedAsOf')})" for a in rows if a.get('status')!='fresh']
+        raise SystemExit('Incomplete current-session coverage: '+', '.join(affected))
 if __name__=='__main__':main()
