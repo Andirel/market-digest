@@ -76,7 +76,8 @@ def extend_crypto_history(obj,hist,expected):
     else:hist.index=hist.index.tz_convert('UTC')
     hist=hist.sort_index()
     usable=hist.dropna(subset=['Close']).sort_index()
-    if not usable.empty and usable.index[-1].date()>=expected:return hist
+    usable_days={x.date() for x in usable.index}
+    if expected in usable_days:return hist
 
     recent=obj.history(period='10d',interval='1h',auto_adjust=False,actions=False,raise_errors=True)
     if recent is None or recent.empty:return hist
