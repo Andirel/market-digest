@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11T06:29:44.946574+00:00",
+  "generatedAt": "2026-11-11T06:31:38.007283+00:00",
   "coverage": {
     "total": 32,
     "fresh": 32,
@@ -30,10 +30,10 @@
         "count": 21,
         "score": 1.809524,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -57,10 +57,10 @@
         "count": 30,
         "score": 1.966667,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -84,10 +84,10 @@
         "count": 20,
         "score": 1.8,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -111,10 +111,10 @@
         "count": 25,
         "score": 2.04,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -138,10 +138,10 @@
         "count": 22,
         "score": 2.272727,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -165,10 +165,10 @@
         "count": 34,
         "score": 2.147059,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -192,10 +192,10 @@
         "count": 33,
         "score": 2.333333,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -219,10 +219,10 @@
         "count": 18,
         "score": 2.611111,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -246,10 +246,10 @@
         "count": 38,
         "score": 1.947368,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -273,10 +273,10 @@
         "count": 21,
         "score": 1.761905,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -300,10 +300,10 @@
         "count": 20,
         "score": 2.25,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -327,10 +327,10 @@
         "count": 25,
         "score": 2.32,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -354,10 +354,10 @@
         "count": 25,
         "score": 1.96,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -381,10 +381,10 @@
         "count": 22,
         "score": 1.954545,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -408,10 +408,10 @@
         "count": 13,
         "score": 2.769231,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -435,10 +435,10 @@
         "count": 24,
         "score": 1.958333,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -462,10 +462,10 @@
         "count": 25,
         "score": 1.8,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -489,10 +489,10 @@
         "count": 32,
         "score": 2.09375,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -516,10 +516,10 @@
         "count": 26,
         "score": 1.961538,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -543,10 +543,10 @@
         "count": 23,
         "score": 2.043478,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -570,10 +570,10 @@
         "count": 25,
         "score": 2.64,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -597,10 +597,10 @@
         "count": 38,
         "score": 2.394737,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -624,10 +624,10 @@
         "count": 23,
         "score": 2.26087,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -651,10 +651,10 @@
         "count": 13,
         "score": 2.076923,
         "period": "0m",
-        "retrievedAt": "2026-11-11T06:29:44.946574+00:00"
+        "retrievedAt": "2026-11-11T06:31:38.007283+00:00"
       },
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -668,8 +668,8 @@
       "low52": 7.022404,
       "high52": 16.716917,
       "ratings": null,
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -683,23 +683,23 @@
       "low52": 1506.505737,
       "high52": 3644.52832,
       "ratings": null,
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
       "ticker": "SOL",
-      "price": 83.239998,
+      "price": 83.25,
       "asOf": "2026-11-10",
       "expectedAsOf": "2026-11-10",
       "status": "fresh",
-      "rsi": 24.334586,
+      "rsi": 24.343478,
       "momentum": "Bearish",
       "low52": 60.414719,
       "high52": 171.607346,
       "ratings": null,
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -713,23 +713,23 @@
       "low52": 20.528625,
       "high52": 97.977707,
       "ratings": null,
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
       "ticker": "AAVE",
-      "price": 123.459999,
+      "price": 123.5,
       "asOf": "2026-11-10",
       "expectedAsOf": "2026-11-10",
       "status": "fresh",
-      "rsi": 38.903588,
+      "rsi": 38.928431,
       "momentum": "Bullish",
       "low52": 58.047077,
       "high52": 231.631027,
       "ratings": null,
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -743,8 +743,8 @@
       "low52": 0.206279,
       "high52": 0.703632,
       "ratings": null,
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -758,8 +758,8 @@
       "low52": 310.399994,
       "high52": 385.119995,
       "ratings": null,
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     },
     {
@@ -773,8 +773,8 @@
       "low52": 100.269997,
       "high52": 100.739998,
       "ratings": null,
-      "attemptedAt": "2026-11-11T06:29:44.946574+00:00",
-      "lastSuccessfulAt": "2026-11-11T06:29:44.946574+00:00",
+      "attemptedAt": "2026-11-11T06:31:38.007283+00:00",
+      "lastSuccessfulAt": "2026-11-11T06:31:38.007283+00:00",
       "refreshError": null
     }
   ],
