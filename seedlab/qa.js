@@ -4,6 +4,17 @@ const app=fs.readFileSync(__dirname+'/app.js','utf8');
 const marker='window.SeedlabModel={model,weightedCap,PRESETS,DEFAULT};';
 assert(app.includes(marker),'Allocation test interface is absent');
 const data=JSON.parse(fs.readFileSync(__dirname+'/data.json','utf8'));
+const allRows=data.assets.concat(data.core||[]);
+assert(data.assets.length===30,'Expected 30 research assets');
+assert(Array.isArray(data.core)&&data.core.length===2,'Expected VTI and SGOV anchors');
+assert(allRows.length===32&&new Set(allRows.map(a=>a.ticker)).size===32,'Expected 32 unique instruments');
+assert(data.coverage?.total===32&&data.coverage?.fresh===32&&data.coverage?.stale===0&&data.coverage?.unavailable===0,'Snapshot coverage must be 32/32 current');
+const generated=Date.parse(data.generatedAt||'');
+assert(Number.isFinite(generated)&&Date.now()-generated>=0&&Date.now()-generated<60*60*1000,'Build snapshot must be newly generated');
+for(const a of allRows){
+ assert(a.status==='fresh','Non-current instrument '+a.ticker);
+ assert(a.asOf&&a.expectedAsOf&&a.asOf===a.expectedAsOf,'Wrong completed session '+a.ticker);
+}
 const context={window:{SEED_DATA:data},document:{getElementById:()=>null},localStorage:{getItem:()=>null},console,Date};
 vm.createContext(context);vm.runInContext(app.slice(0,app.indexOf(marker)+marker.length),context);
 const {model,PRESETS,DEFAULT}=context.window.SeedlabModel;
