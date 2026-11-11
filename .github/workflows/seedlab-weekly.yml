@@ -14,7 +14,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -23,10 +23,8 @@ jobs:
       - name: Check dashboard JavaScript syntax
         run: node --check seedlab/app.js
       - name: Install public-market research dependencies
-        run: pip install 'yfinance>=0.2.65,<2' 'pandas>=2.2,<3' 'numpy>=2,<3'
+        run: pip install 'yfinance>=0.2.65,<2' 'pandas>=2.2,<3' 'numpy>=2,<3' 'pandas_market_calendars>=5,<6'
       - name: Calculate and validate snapshot
-        id: refresh
-        continue-on-error: true
         run: python seedlab/build.py
       - name: Verify allocation and market-data invariants
         id: qa
@@ -43,7 +41,7 @@ jobs:
           from pathlib import Path
           p=Path('publish/seedlab/data.json')
           d=json.loads(p.read_text())
-          fields=['ticker','price','asOf','status','rsi','momentum','low52','high52','ratings']
+          fields=['ticker','price','asOf','expectedAsOf','status','rsi','momentum','low52','high52','ratings','attemptedAt','lastSuccessfulAt','refreshError']
           s={k:d.get(k) for k in ['generatedAt','coverage','schedule','researchAsOf']}
           s['assets']=[{k:r.get(k) for k in fields} for r in d.get('assets',[])+d.get('core',[])]
           s['qa']='800 allocation combinations passed: budget, position caps, theme caps, crypto caps, horizon, and data invariants.'
@@ -81,6 +79,8 @@ jobs:
                   assert 'SeedlabModel' in js
                   d=json.loads(get('data.json'))
                   assert len(d['assets'])==30 and len(d['core'])==2
+                  assert d['coverage']=={'total':32,'fresh':32,'stale':0,'unavailable':0}
+                  assert all(x.get('status')=='fresh' and x.get('asOf')==x.get('expectedAsOf') for x in d['assets']+d['core'])
                   assert d['generatedAt']>=expected,'CDN still serving preceding snapshot'
                   print('LIVE VERIFIED: '+base)
                   print('Snapshot: '+d['generatedAt']+'; coverage: '+json.dumps(d['coverage']))
@@ -90,6 +90,3 @@ jobs:
                   if attempt==17: raise
                   time.sleep(10)
           PY
-      - name: Make data failure visible in Actions
-        if: steps.refresh.outcome == 'failure'
-        run: exit 1
