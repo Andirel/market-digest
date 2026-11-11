@@ -68,6 +68,33 @@ def expected_session(kind, now):
         raise RuntimeError('Could not determine latest completed NYSE session')
     return completed.index[-1].date()
 
+def extend_crypto_history(obj,hist,expected):
+    """Fill a lagging Yahoo crypto daily candle from completed hourly bars."""
+    import pandas as pd
+    hist=hist.copy()
+    if hist.index.tz is None:hist.index=hist.index.tz_localize('UTC')
+    else:hist.index=hist.index.tz_convert('UTC')
+    if not hist.empty and hist.index[-1].date()>=expected:return hist
+    recent=obj.history(period='10d',interval='1h',auto_adjust=False,actions=False,raise_errors=True)
+    if recent is None or recent.empty:return hist
+    recent=recent.copy()
+    if recent.index.tz is None:recent.index=recent.index.tz_localize('UTC')
+    else:recent.index=recent.index.tz_convert('UTC')
+    recent['_day']=[x.date() for x in recent.index]
+    existing={x.date() for x in hist.index}
+    additions=[]
+    for day in sorted(set(recent['_day'])):
+        if day in existing or day>expected:continue
+        g=recent[recent['_day']==day]
+        if len(g)<20:continue
+        row={col:None for col in hist.columns}
+        row.update(Open=float(g['Open'].iloc[0]),High=float(g['High'].max()),Low=float(g['Low'].min()),Close=float(g['Close'].iloc[-1]))
+        if 'Adj Close' in row:row['Adj Close']=row['Close']
+        if 'Volume' in row:row['Volume']=float(g['Volume'].fillna(0).sum())
+        additions.append(pd.DataFrame([row],index=[pd.Timestamp(day,tz='UTC')]))
+    if additions:hist=pd.concat([hist]+additions).sort_index()
+    return hist
+
 def rsi(values,n=14):
     a=[float(x) for x in values]
     if len(a)<n+1:return None
@@ -86,6 +113,7 @@ def calculate(asset,old,now):
         obj=yf.Ticker(s);hist=obj.history(period='2y',interval='1d',auto_adjust=False,actions=False,raise_errors=True)
         if hist is None or hist.empty:raise ValueError('Empty history')
         expected=expected_session(asset['kind'],now)
+        if asset['kind']=='crypto':hist=extend_crypto_history(obj,hist,expected)
         hist=hist[[x.date()<=expected for x in hist.index]].dropna(subset=['Close'])
         if len(hist)<60:raise ValueError('Insufficient complete daily bars')
         c=hist['Close'].astype(float);p=float(c.iloc[-1]);end=hist.index[-1].date()
