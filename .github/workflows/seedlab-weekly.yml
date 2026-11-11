@@ -4,7 +4,8 @@ on:
     branches: [main]
     paths: ['seedlab/**', '.github/workflows/seedlab-weekly.yml']
   schedule:
-    - cron: '17 12 * * 1'
+    - cron: '47 0 * * 1'
+    - cron: '47 10 * * 1'
   workflow_dispatch: {}
 permissions:
   contents: write
