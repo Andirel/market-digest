@@ -69,35 +69,42 @@ def expected_session(kind, now):
     return completed.index[-1].date()
 
 def extend_crypto_history(obj,hist,expected):
-    """Fill a lagging Yahoo crypto daily candle from completed hourly bars."""
+    """Fill a lagging/incomplete Yahoo crypto daily candle from completed hourly bars."""
     import pandas as pd
     hist=hist.copy()
     if hist.index.tz is None:hist.index=hist.index.tz_localize('UTC')
     else:hist.index=hist.index.tz_convert('UTC')
-    usable=hist.dropna(subset=['Close'])
+    hist=hist.sort_index()
+    usable=hist.dropna(subset=['Close']).sort_index()
     if not usable.empty and usable.index[-1].date()>=expected:return hist
+
     recent=obj.history(period='10d',interval='1h',auto_adjust=False,actions=False,raise_errors=True)
     if recent is None or recent.empty:return hist
     recent=recent.copy()
     if recent.index.tz is None:recent.index=recent.index.tz_localize('UTC')
     else:recent.index=recent.index.tz_convert('UTC')
+    recent=recent.sort_index()
     recent['_day']=[x.date() for x in recent.index]
     counts=recent.groupby('_day').size()
     print('CRYPTO HOURLY '+str(getattr(obj,'ticker','?'))+' buckets: '+', '.join(f'{day}:{int(count)}' for day,count in counts.tail(5).items()),flush=True)
-    existing={x.date() for x in hist.index}
+
+    existing_valid={x.date() for x in usable.index}
     additions=[]
+    replaced_days=set()
     for day in sorted(set(recent['_day'])):
-        if day in existing or day>expected:continue
-        g=recent[recent['_day']==day]
+        if day in existing_valid or day>expected:continue
+        g=recent[recent['_day']==day].dropna(subset=['Close'])
         if len(g)<20:continue
         row={col:None for col in hist.columns}
         row.update(Open=float(g['Open'].iloc[0]),High=float(g['High'].max()),Low=float(g['Low'].min()),Close=float(g['Close'].iloc[-1]))
         if 'Adj Close' in row:row['Adj Close']=row['Close']
         if 'Volume' in row:row['Volume']=float(g['Volume'].fillna(0).sum())
         additions.append(pd.DataFrame([row],index=[pd.Timestamp(day,tz='UTC')]))
-    if additions:hist=pd.concat([hist]+additions).sort_index()
+        replaced_days.add(day)
+    if additions:
+        hist=hist[[x.date() not in replaced_days for x in hist.index]]
+        hist=pd.concat([hist]+additions).sort_index()
     return hist
-
 def rsi(values,n=14):
     a=[float(x) for x in values]
     if len(a)<n+1:return None
