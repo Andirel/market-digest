@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T08:13:46.968679+00:00",
+  "generatedAt": "2026-11-23T22:16:39.735047+00:00",
   "coverage": {
     "total": 32,
     "fresh": 32,
@@ -11,13 +11,13 @@
   "assets": [
     {
       "ticker": "TSM",
-      "price": 318.709991,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 363.600006,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 28.258815,
+      "rsi": 43.052117,
       "momentum": "Bearish",
-      "low52": 266.820007,
+      "low52": 273.079987,
       "high52": 487.470001,
       "ratings": {
         "counts": [
@@ -30,19 +30,19 @@
         "count": 21,
         "score": 1.761905,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "VRT",
-      "price": 166.240005,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 186.350006,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 35.138804,
+      "rsi": 43.651554,
       "momentum": "Bearish",
       "low52": 147.820007,
       "high52": 379.934998,
@@ -57,19 +57,19 @@
         "count": 31,
         "score": 2.0,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "CRDO",
-      "price": 99.860001,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 122.459999,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 31.614479,
+      "rsi": 42.602132,
       "momentum": "Bearish",
       "low52": 86.485001,
       "high52": 308.670013,
@@ -84,20 +84,20 @@
         "count": 20,
         "score": 1.8,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "ALAB",
-      "price": 180.350006,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 222.119995,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 33.043692,
-      "momentum": "Bearish",
+      "rsi": 45.766994,
+      "momentum": "Bullish",
       "low52": 97.889999,
       "high52": 499.476013,
       "ratings": {
@@ -111,19 +111,19 @@
         "count": 25,
         "score": 2.04,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "NBIS",
-      "price": 81.309998,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 97.800003,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 28.512698,
+      "rsi": 35.996862,
       "momentum": "Bearish",
       "low52": 73.519997,
       "high52": 299.859985,
@@ -138,19 +138,19 @@
         "count": 22,
         "score": 2.181818,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "NET",
-      "price": 274.959991,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 291.130005,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 42.357916,
+      "rsi": 47.458029,
       "momentum": "Bullish",
       "low52": 158.830002,
       "high52": 370.350006,
@@ -165,19 +165,19 @@
         "count": 35,
         "score": 2.142857,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "PLTR",
-      "price": 143.490005,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 159.360001,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 26.380952,
+      "rsi": 41.708848,
       "momentum": "Bearish",
       "low52": 106.370003,
       "high52": 212.940002,
@@ -192,19 +192,19 @@
         "count": 34,
         "score": 2.294118,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "SYM",
-      "price": 31.1,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 34.970001,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 28.918617,
+      "rsi": 45.005406,
       "momentum": "Bearish",
       "low52": 30.325001,
       "high52": 87.879997,
@@ -219,21 +219,21 @@
         "count": 19,
         "score": 2.631579,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "GEV",
-      "price": 699.330017,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 756.710022,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 31.975345,
+      "rsi": 41.280074,
       "momentum": "Bearish",
-      "low52": 530.159973,
+      "low52": 553.25,
       "high52": 1195.939941,
       "ratings": {
         "counts": [
@@ -246,19 +246,19 @@
         "count": 37,
         "score": 1.945946,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "CCJ",
-      "price": 58.0,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 61.5,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 24.081267,
+      "rsi": 32.192512,
       "momentum": "Bearish",
       "low52": 57.869999,
       "high52": 135.240005,
@@ -273,19 +273,19 @@
         "count": 21,
         "score": 1.761905,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "LEU",
-      "price": 81.43,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 86.809998,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 31.866177,
+      "rsi": 36.822184,
       "momentum": "Bearish",
       "low52": 80.900002,
       "high52": 345.600006,
@@ -300,19 +300,19 @@
         "count": 21,
         "score": 2.238095,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "OKLO",
-      "price": 19.85,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 20.77,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 32.310118,
+      "rsi": 36.001326,
       "momentum": "Bullish",
       "low52": 18.535,
       "high52": 115.720001,
@@ -327,19 +327,19 @@
         "count": 25,
         "score": 2.28,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "CEG",
-      "price": 237.410004,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 251.720001,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 37.464663,
+      "rsi": 44.853941,
       "momentum": "Bearish",
       "low52": 228.630005,
       "high52": 380.779999,
@@ -354,21 +354,21 @@
         "count": 25,
         "score": 1.96,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "RKLB",
-      "price": 45.419998,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 49.630001,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 35.632833,
+      "rsi": 41.726442,
       "momentum": "Bearish",
-      "low52": 37.57,
+      "low52": 39.299999,
       "high52": 151.0,
       "ratings": {
         "counts": [
@@ -381,19 +381,19 @@
         "count": 21,
         "score": 1.952381,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "ASTS",
-      "price": 23.27,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 25.67,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 27.62117,
+      "rsi": 33.155817,
       "momentum": "Bearish",
       "low52": 22.719999,
       "high52": 133.860001,
@@ -408,19 +408,19 @@
         "count": 13,
         "score": 2.692308,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "AVAV",
-      "price": 86.790001,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 90.669998,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 27.625375,
+      "rsi": 31.552339,
       "momentum": "Bearish",
       "low52": 86.199997,
       "high52": 408.25,
@@ -435,19 +435,19 @@
         "count": 24,
         "score": 1.958333,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "KTOS",
-      "price": 26.889999,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 28.5,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 23.976639,
+      "rsi": 30.260707,
       "momentum": "Bearish",
       "low52": 26.6,
       "high52": 134.0,
@@ -462,19 +462,19 @@
         "count": 25,
         "score": 1.8,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "HOOD",
-      "price": 62.169998,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 67.370003,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 22.79409,
+      "rsi": 31.641708,
       "momentum": "Bearish",
       "low52": 61.75,
       "high52": 139.75,
@@ -489,19 +489,19 @@
         "count": 32,
         "score": 2.0625,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "MELI",
-      "price": 1355.0,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 1425.079956,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 25.698607,
+      "rsi": 35.478681,
       "momentum": "Bearish",
       "low52": 1333.540039,
       "high52": 2342.0,
@@ -516,19 +516,19 @@
         "count": 25,
         "score": 1.96,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "NU",
-      "price": 11.27,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 11.8,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 37.287325,
+      "rsi": 42.784305,
       "momentum": "Bullish",
       "low52": 11.2,
       "high52": 18.98,
@@ -543,19 +543,19 @@
         "count": 23,
         "score": 2.043478,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "SOFI",
-      "price": 12.48,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 13.09,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 27.692615,
+      "rsi": 33.922099,
       "momentum": "Bearish",
       "low52": 12.41,
       "high52": 30.42,
@@ -570,19 +570,19 @@
         "count": 25,
         "score": 2.56,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "COIN",
-      "price": 101.970001,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 108.779999,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 22.940258,
+      "rsi": 29.795296,
       "momentum": "Bearish",
       "low52": 101.709999,
       "high52": 284.73999,
@@ -597,19 +597,19 @@
         "count": 37,
         "score": 2.324324,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "CRSP",
-      "price": 39.099998,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 43.279999,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 27.823925,
+      "rsi": 42.329788,
       "momentum": "Bearish",
       "low52": 38.150002,
       "high52": 63.450001,
@@ -624,19 +624,19 @@
         "count": 23,
         "score": 2.26087,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "TMDX",
-      "price": 85.25,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 92.730003,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 51.954804,
+      "rsi": 59.711024,
       "momentum": "Bullish",
       "low52": 60.105,
       "high52": 156.0,
@@ -651,10 +651,10 @@
         "count": 13,
         "score": 2.076923,
         "period": "0m",
-        "retrievedAt": "2026-11-23T08:13:46.968679+00:00"
+        "retrievedAt": "2026-11-23T22:16:39.735047+00:00"
       },
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
@@ -668,8 +668,8 @@
       "low52": 7.022404,
       "high52": 15.74394,
       "ratings": null,
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
@@ -683,8 +683,8 @@
       "low52": 1506.505737,
       "high52": 3446.622803,
       "ratings": null,
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
@@ -698,8 +698,8 @@
       "low52": 60.414719,
       "high52": 148.216003,
       "ratings": null,
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
@@ -713,8 +713,8 @@
       "low52": 20.528625,
       "high52": 97.977707,
       "ratings": null,
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
@@ -728,8 +728,8 @@
       "low52": 58.047077,
       "high52": 206.730408,
       "ratings": null,
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
@@ -743,38 +743,38 @@
       "low52": 0.206279,
       "high52": 0.604819,
       "ratings": null,
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "VTI",
-      "price": 340.019989,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "price": 355.269989,
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
-      "rsi": 25.444564,
+      "rsi": 41.393531,
       "momentum": "Bearish",
       "low52": 310.399994,
       "high52": 385.119995,
       "ratings": null,
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     },
     {
       "ticker": "SGOV",
       "price": 100.639999,
-      "asOf": "2026-11-20",
-      "expectedAsOf": "2026-11-20",
+      "asOf": "2026-11-23",
+      "expectedAsOf": "2026-11-23",
       "status": "fresh",
       "rsi": 61.094524,
       "momentum": "Bullish",
       "low52": 100.269997,
       "high52": 100.739998,
       "ratings": null,
-      "attemptedAt": "2026-11-23T08:13:46.968679+00:00",
-      "lastSuccessfulAt": "2026-11-23T08:13:46.968679+00:00",
+      "attemptedAt": "2026-11-23T22:16:39.735047+00:00",
+      "lastSuccessfulAt": "2026-11-23T22:16:39.735047+00:00",
       "refreshError": null
     }
   ],
